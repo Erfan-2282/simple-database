@@ -1,45 +1,56 @@
-print("\nWelcome to this simple database.\n")
+print("Welcome to this simple database.")
 database = {}
 while True:
-    print("\nWhat do you want to do?\n(Enter A to add a key.\n Enter C to change a value(data).\n Enter D to delete a key.\n Enter E to clear the database.\n Enter S to search for a value.\n Enter K to show all keys.\n Enter V to show all values.\n Enter F to show full database.\n Enter Q to quit.) ")
-    action = input().strip()
-    if action.upper() == "A":
-        key = input("\nEnter key:\n")
-        value = input("Enter value:\n")
+    print("""
+        What do you want to do?
+            Enter A to add a new key.
+            Enter C to change a value.
+            Enter D to delete a key.
+            Enter E to clear the database.
+            Enter S to search for a value.
+            Enter K to show all keys.
+            Enter V to show all values.
+            Enter F to show full database.
+            Enter Q to quit.
+            """)
+    action = input().strip().upper()
+    if action == "A":
+        key = input("Enter key: ")
+        value = input("Enter value: ")
         database[key] = value
-        print("%s : %s\nThis key has been added." % (key, value))
-    elif action.upper() == "C":
-        key = input("\nEnter key:\n")
+        print(f"{key} : {value}\nThis key has been added.")
+    elif action == "C":
+        key = input("Enter the key: ")
         if key in database:
-            new_value = input("Enter the new value.\n")
+            new_value = input("Enter the new value: ")
             database[key] = new_value
-            print("%s : %s" % (key, database[key]))
+            print(f"{key} : {new_value}")
         else:
-            print("\nNo such key in the database.")
-    elif action.upper() == "D":
-        key = input("\nEnter key:\n")
+            print("No such key in the database.")
+    elif action == "D":
+        key = input("Enter key: ")
         if key in database:
             del database[key]
-            print("%s was deleted." % (key))
+            print(f"{key} was deleted." )
         else:
-            print("\nNo such key in the database.")
-    elif action.upper() == "E":
+            print("No such key in the database.")
+    elif action == "E":
         database.clear()
-        print("\nDatabase was clear.")
-    elif action.upper() == "S":
-        key = input("\nEnter key:\n")
+        print("Database is cleared.")
+    elif action == "S":
+        key = input("Enter key: ")
         if key not in database:
-            print("\nNo such key in the database.")
-        elif key in database:
-            print("The value for the %s key is %s." % (key, database[key]))
-    elif action.upper() == "K":
-        print("\n", database.keys())
-    elif action.upper() == "V":
-        print("\n", database.values())
-    elif action.upper() == "F":
-        print("\n", database)
-    elif action.upper() == "Q":
-        print("\nThanks for use.")
+            print("No such key in the database.")
+        else:
+            print(f"The value for the {key} key is {database[key]}.")
+    elif action == "K":
+        print(list(database.keys()))
+    elif action == "V":
+        print(list(database.values()))
+    elif action == "F":
+        print(database)
+    elif action == "Q":
+        print("Thanks for using")
         break
     else:
-        print("\nYou have not typed a action.")
+        print("You have not typed a valid action.")
